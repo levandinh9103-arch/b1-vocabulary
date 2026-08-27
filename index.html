@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B1 English Vocabulary</title>
+<meta name="theme-color" content="#2563eb">
+
+<title>B1 Vocabulary Game</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -20,49 +23,58 @@ body {
 
 .container {
     width: 95%;
-    max-width: 800px;
-    margin: 25px auto;
+    max-width: 850px;
+    margin: 20px auto;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .header h1 {
     margin: 0;
-    color: #1d4ed8;
     font-size: 32px;
+    color: #1d4ed8;
 }
 
 .header p {
+    margin: 8px 0 0;
     color: #64748b;
-    margin-top: 8px;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
 /* =========================
-   CHẾ ĐỘ
+   CARD
+========================= */
+
+.card {
+    background: white;
+    padding: 24px;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   MODE
 ========================= */
 
 .mode {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .mode button {
-    padding: 13px;
     border: none;
+    padding: 13px;
     border-radius: 12px;
     background: #e2e8f0;
+    color: #334155;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
@@ -74,32 +86,68 @@ body {
 }
 
 /* =========================
-   ĐIỂM
+   GAME TOP
 ========================= */
 
-.score-box {
+.game-top {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
-.score-item {
+.top-box {
     background: #f8fafc;
     border-radius: 12px;
     text-align: center;
     padding: 12px 5px;
-    font-size: 14px;
 }
 
-.score-item strong {
+.top-box span {
     display: block;
-    font-size: 20px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.top-box strong {
+    display: block;
+    font-size: 21px;
     margin-top: 4px;
 }
 
 /* =========================
-   CÂU HỎI
+   PROGRESS
+========================= */
+
+.progress-area {
+    margin-bottom: 18px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    transition: width 0.3s;
+}
+
+/* =========================
+   QUESTION
 ========================= */
 
 .question-card {
@@ -107,38 +155,37 @@ body {
     border-radius: 18px;
     padding: 30px 15px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .question-label {
     color: #64748b;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .question {
     font-size: 42px;
     font-weight: bold;
     color: #1e3a8a;
-    margin-bottom: 7px;
     word-break: break-word;
 }
 
 .ipa {
-    font-size: 21px;
+    font-size: 20px;
     color: #475569;
-    margin-bottom: 18px;
+    margin-top: 8px;
 }
 
 /* =========================
-   PHÁT ÂM
+   AUDIO
 ========================= */
 
 .audio-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
 }
 
 .audio-btn {
@@ -159,16 +206,20 @@ body {
    INPUT
 ========================= */
 
-.answer-area input {
+.answer-area {
+    margin-top: 18px;
+}
+
+.answer-input {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     border: 2px solid #cbd5e1;
     border-radius: 12px;
     font-size: 18px;
     outline: none;
 }
 
-.answer-area input:focus {
+.answer-input:focus {
     border-color: #2563eb;
 }
 
@@ -176,108 +227,86 @@ body {
    BUTTONS
 ========================= */
 
-.action-buttons {
+.main-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 12px;
+    gap: 9px;
+    margin-top: 11px;
 }
 
-.action-buttons button {
+.main-buttons button {
     border: none;
     padding: 13px;
     border-radius: 11px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    color: white;
 }
 
 .check-btn {
     background: #16a34a;
-    color: white;
 }
 
-.next-btn {
-    background: #2563eb;
-    color: white;
+.skip-btn {
+    background: #f59e0b;
 }
 
 .answer-btn {
-    background: #f59e0b;
-    color: white;
+    background: #7c3aed;
 }
 
-.reset-btn {
-    background: #64748b;
-    color: white;
-}
-
-/* =========================
-   EXTRA
-========================= */
-
-.extra-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.extra-buttons button {
-    border: none;
-    padding: 11px;
-    border-radius: 10px;
-    cursor: pointer;
-    background: #f1f5f9;
-    color: #334155;
-    font-weight: bold;
-}
-
-.favorite {
-    background: #fee2e2 !important;
-    color: #dc2626 !important;
+.sound-btn {
+    background: #2563eb;
 }
 
 /* =========================
-   KẾT QUẢ
+   RESULT
 ========================= */
 
 .result {
     display: none;
-    margin-top: 18px;
+    margin-top: 15px;
     padding: 15px;
     border-radius: 12px;
     text-align: center;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .result.correct {
+    display: block;
     background: #dcfce7;
     color: #166534;
 }
 
 .result.wrong {
+    display: block;
     background: #fee2e2;
     color: #991b1b;
 }
 
+.result.skipped {
+    display: block;
+    background: #fef3c7;
+    color: #92400e;
+}
+
 /* =========================
-   THÔNG TIN TỪ
+   WORD INFORMATION
 ========================= */
 
 .word-info {
     display: none;
-    margin-top: 15px;
     background: #f8fafc;
+    margin-top: 15px;
     padding: 18px;
-    border-radius: 14px;
-    text-align: left;
+    border-radius: 15px;
 }
 
 .info-row {
     margin-bottom: 12px;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 .info-row:last-child {
@@ -290,23 +319,23 @@ body {
 }
 
 .answer-text {
+    color: #1d4ed8;
     font-size: 24px;
     font-weight: bold;
-    color: #1d4ed8;
     margin-top: 3px;
 }
 
 .info-ipa {
-    font-size: 20px;
     color: #475569;
+    font-size: 20px;
 }
 
-.pos-en {
+.info-pos {
     color: #7c3aed;
     font-weight: bold;
 }
 
-.pos-vi {
+.info-pos-vi {
     color: #059669;
     font-weight: bold;
 }
@@ -317,62 +346,135 @@ body {
 }
 
 /* =========================
-   PROGRESS
-========================= */
-
-.progress-container {
-    margin-top: 20px;
-}
-
-.progress-text {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #64748b;
-    margin-bottom: 7px;
-}
-
-.progress-bar {
-    height: 9px;
-    background: #e2e8f0;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #2563eb;
-    transition: width 0.3s;
-}
-
-/* =========================
-   HƯỚNG DẪN
+   TIP
 ========================= */
 
 .tip {
-    margin-top: 18px;
+    margin-top: 17px;
     padding: 13px;
-    background: #f8fafc;
     border-radius: 10px;
-    text-align: center;
+    background: #f8fafc;
     color: #64748b;
     font-size: 14px;
     line-height: 1.6;
+    text-align: center;
+}
+
+/* =========================
+   END SCREEN
+========================= */
+
+#endScreen {
+    display: none;
+}
+
+.end-title {
+    text-align: center;
+    color: #1d4ed8;
+    margin-top: 0;
+}
+
+.final-score {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.final-box {
+    padding: 14px 5px;
+    border-radius: 12px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.final-box strong {
+    display: block;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+/* =========================
+   RESULT TABLE
+========================= */
+
+.result-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-row {
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 13px;
+    background: white;
+}
+
+.result-number {
+    font-weight: bold;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.result-question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+.result-answer {
+    margin-top: 5px;
+}
+
+.result-status {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.status-correct {
+    color: #16a34a;
+}
+
+.status-wrong {
+    color: #dc2626;
+}
+
+.status-skipped {
+    color: #d97706;
+}
+
+/* =========================
+   RESTART
+========================= */
+
+.restart-btn {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
     .container {
-        margin: 12px auto;
+        width: 96%;
+        margin: 10px auto;
     }
 
     .card {
-        padding: 18px;
+        padding: 17px;
+        border-radius: 18px;
     }
 
     .header h1 {
@@ -383,33 +485,40 @@ body {
         font-size: 32px;
     }
 
-    .score-box {
-        grid-template-columns: repeat(2, 1fr);
+    .game-top {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .action-buttons {
+    .final-score {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-buttons {
         grid-template-columns: 1fr;
     }
+
 }
+
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
     <div class="header">
-        <h1>📚 B1 English Vocabulary</h1>
-        <p>Học từ vựng ngẫu nhiên – có phát âm và giải thích</p>
+        <h1>🎮 B1 Vocabulary Game</h1>
+        <p>10 câu ngẫu nhiên – trả lời để ghi điểm</p>
     </div>
 
 
-    <div class="card">
+    <!-- =====================================================
+         MÀN HÌNH CHƠI
+    ====================================================== -->
 
-        <!-- =====================
-             CHỌN CHẾ ĐỘ
-        ====================== -->
+    <div id="gameScreen" class="card">
+
+        <!-- MODE -->
 
         <div class="mode">
 
@@ -417,69 +526,119 @@ body {
                 id="enViBtn"
                 class="active"
                 onclick="setMode('en-vi')">
+
                 🇬🇧 English → 🇻🇳 Việt
+
             </button>
+
 
             <button
                 id="viEnBtn"
                 onclick="setMode('vi-en')">
+
                 🇻🇳 Việt → 🇬🇧 English
+
             </button>
 
         </div>
 
 
-        <!-- =====================
-             ĐIỂM
-        ====================== -->
+        <!-- THỐNG KÊ -->
 
-        <div class="score-box">
+        <div class="game-top">
 
-            <div class="score-item">
-                ✅ Đúng
-                <strong id="correct">0</strong>
+            <div class="top-box">
+
+                <span>Câu</span>
+
+                <strong>
+                    <span id="questionNumber">1</span>/10
+                </strong>
+
             </div>
 
-            <div class="score-item">
-                ❌ Sai
-                <strong id="wrong">0</strong>
+
+            <div class="top-box">
+
+                <span>Đúng</span>
+
+                <strong id="correctCount">
+                    0
+                </strong>
+
             </div>
 
-            <div class="score-item">
-                🎯 Chính xác
-                <strong id="accuracy">0%</strong>
-            </div>
 
-            <div class="score-item">
-                ⭐ Điểm
-                <strong id="score">0</strong>
+            <div class="top-box">
+
+                <span>Điểm</span>
+
+                <strong id="scoreCount">
+                    0
+                </strong>
+
             </div>
 
         </div>
 
 
-        <!-- =====================
-             CÂU HỎI
-        ====================== -->
+        <!-- THANH TIẾN ĐỘ -->
+
+        <div class="progress-area">
+
+            <div class="progress-text">
+
+                <span>
+                    Tiến độ
+                </span>
+
+                <span>
+                    <span id="progressNumber">1</span>/10
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CÂU HỎI -->
 
         <div class="question-card">
 
             <div
                 id="questionLabel"
                 class="question-label">
-                Hãy viết nghĩa tiếng Việt của từ:
+
+                Hãy viết nghĩa tiếng Việt:
+
             </div>
+
 
             <div
                 id="question"
                 class="question">
+
                 achieve
+
             </div>
+
 
             <div
                 id="ipa"
                 class="ipa">
+
                 /əˈtʃiːv/
+
             </div>
 
 
@@ -487,14 +646,19 @@ body {
 
                 <button
                     class="audio-btn"
-                    onclick="speakCurrent(1)">
-                    🔊 Phát âm
+                    onclick="speakQuestion(1)">
+
+                    🔊 Nghe
+
                 </button>
+
 
                 <button
                     class="audio-btn"
-                    onclick="speakCurrent(0.6)">
-                    🐢 Phát âm chậm
+                    onclick="speakQuestion(0.6)">
+
+                    🐢 Nghe chậm
+
                 </button>
 
             </div>
@@ -502,73 +666,63 @@ body {
         </div>
 
 
-        <!-- =====================
-             NHẬP ĐÁP ÁN
-        ====================== -->
+        <!-- INPUT -->
 
         <div class="answer-area">
 
             <input
                 id="answerInput"
+                class="answer-input"
                 type="text"
-                placeholder="Nhập câu trả lời..."
-                autocomplete="off">
+                autocomplete="off"
+                placeholder="Nhập câu trả lời...">
 
         </div>
 
 
-        <!-- =====================
-             NÚT
-        ====================== -->
+        <!-- BUTTONS -->
 
-        <div class="action-buttons">
+        <div class="main-buttons">
 
             <button
                 class="check-btn"
                 onclick="checkAnswer()">
+
                 ✅ Kiểm tra
+
             </button>
 
+
             <button
-                class="next-btn"
-                onclick="nextRandomWord()">
-                🎲 Từ ngẫu nhiên
+                class="skip-btn"
+                onclick="skipQuestion()">
+
+                ⏭️ Bỏ qua
+
             </button>
+
 
             <button
                 class="answer-btn"
                 onclick="showAnswer()">
-                👁️ Hiện đáp án
+
+                👁️ Xem đáp án
+
             </button>
 
+
             <button
-                class="reset-btn"
-                onclick="resetGame()">
-                🔄 Làm lại
+                class="sound-btn"
+                onclick="speakQuestion(0.7)">
+
+                🔊 Nghe lại
+
             </button>
 
         </div>
 
 
-        <div class="extra-buttons">
-
-            <button
-                id="favoriteBtn"
-                onclick="toggleFavorite()">
-                ♡ Ôn lại từ này
-            </button>
-
-            <button
-                onclick="speakCurrent(0.6)">
-                🔊 Nghe lại chậm
-            </button>
-
-        </div>
-
-
-        <!-- =====================
-             KẾT QUẢ
-        ====================== -->
+        <!-- KẾT QUẢ CÂU HIỆN TẠI -->
 
         <div
             id="result"
@@ -576,9 +730,7 @@ body {
         </div>
 
 
-        <!-- =====================
-             THÔNG TIN
-        ====================== -->
+        <!-- THÔNG TIN TỪ -->
 
         <div
             id="wordInfo"
@@ -588,7 +740,7 @@ body {
             <div class="info-row">
 
                 <div class="info-title">
-                    ✅ Đáp án đúng:
+                    ✅ Đáp án:
                 </div>
 
                 <div
@@ -621,7 +773,7 @@ body {
 
                 <div
                     id="infoPOS"
-                    class="pos-en">
+                    class="info-pos">
                 </div>
 
             </div>
@@ -630,12 +782,12 @@ body {
             <div class="info-row">
 
                 <div class="info-title">
-                    🇻🇳 Từ loại tiếng Việt:
+                    🇻🇳 Tên từ loại:
                 </div>
 
                 <div
                     id="infoPOSVI"
-                    class="pos-vi">
+                    class="info-pos-vi">
                 </div>
 
             </div>
@@ -669,48 +821,89 @@ body {
         </div>
 
 
-        <!-- =====================
-             TIẾN ĐỘ
-        ====================== -->
-
-        <div class="progress-container">
-
-            <div class="progress-text">
-
-                <span>
-                    Đã trả lời:
-                    <b id="questionCount">0</b>
-                </span>
-
-                <span>
-                    🎲 Ngẫu nhiên
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <div
-                    id="progressFill"
-                    class="progress-fill">
-                </div>
-
-            </div>
-
-        </div>
-
-
         <div class="tip">
 
-            💡 <b>Đúng:</b> hiện kết quả → phát âm → 1 giây sau sang từ mới.
+            ✅ Trả lời đúng → tự sang câu mới.
             <br>
 
-            ❌ <b>Sai:</b> không sang câu mới → đáp án và giải thích xuất hiện ngay.
+            ❌ Trả lời sai → hiện đáp án và giữ nguyên câu.
             <br>
 
-            🔊 Mỗi khi xuất hiện từ mới, từ tiếng Anh sẽ tự động được phát âm.
+            ⏭️ Không biết → bấm <b>Bỏ qua</b>.
+            <br>
+
+            🔊 Từ/cụm từ sẽ được đọc theo ngôn ngữ của câu hỏi.
 
         </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MÀN HÌNH KẾT QUẢ
+    ====================================================== -->
+
+    <div id="endScreen" class="card">
+
+        <h2 class="end-title">
+            🎉 Hoàn thành 10 câu!
+        </h2>
+
+
+        <div class="final-score">
+
+            <div class="final-box">
+                ✅ Đúng
+                <strong id="finalCorrect">
+                    0
+                </strong>
+            </div>
+
+
+            <div class="final-box">
+                ❌ Sai
+                <strong id="finalWrong">
+                    0
+                </strong>
+            </div>
+
+
+            <div class="final-box">
+                ⏭️ Bỏ qua
+                <strong id="finalSkipped">
+                    0
+                </strong>
+            </div>
+
+
+            <div class="final-box">
+                ⭐ Điểm
+                <strong id="finalScore">
+                    0/10
+                </strong>
+            </div>
+
+        </div>
+
+
+        <h3>
+            📋 Kết quả 10 câu
+        </h3>
+
+
+        <div
+            id="resultList"
+            class="result-list">
+        </div>
+
+
+        <button
+            class="restart-btn"
+            onclick="restartGame()">
+
+            🔄 Bắt đầu lại
+
+        </button>
 
     </div>
 
@@ -749,9 +942,9 @@ const words = [
         en: "benefit",
         vi: "lợi ích",
         ipa: "/ˈbenɪfɪt/",
-        pos: "Noun (N)",
-        posVi: "Danh từ",
-        posEn: "An advantage or positive result.",
+        pos: "Noun (N) / Verb (V)",
+        posVi: "Danh từ / Động từ",
+        posEn: "An advantage; or to receive an advantage.",
         example: "Exercise has many health benefits."
     },
 
@@ -761,7 +954,7 @@ const words = [
         ipa: "/tʃɔɪs/",
         pos: "Noun (N)",
         posVi: "Danh từ",
-        posEn: "An act of choosing between two or more things.",
+        posEn: "An act of choosing between possibilities.",
         example: "You have to make an important choice."
     },
 
@@ -771,7 +964,7 @@ const words = [
         ipa: "/kənˈtrɪbjuːt/",
         pos: "Verb (V)",
         posVi: "Động từ",
-        posEn: "To give something to help achieve a goal.",
+        posEn: "To give something to help achieve a result.",
         example: "Everyone can contribute to the project."
     },
 
@@ -781,7 +974,7 @@ const words = [
         ipa: "/dɪˈsɪʒən/",
         pos: "Noun (N)",
         posVi: "Danh từ",
-        posEn: "A choice made after thinking about something.",
+        posEn: "A choice made after thinking carefully.",
         example: "It was a difficult decision."
     },
 
@@ -797,11 +990,11 @@ const words = [
 
     {
         en: "experience",
-        vi: "kinh nghiệm",
+        vi: "kinh nghiệm / trải nghiệm",
         ipa: "/ɪkˈspɪəriəns/",
-        pos: "Noun (N)",
-        posVi: "Danh từ",
-        posEn: "Knowledge or skill gained by doing something.",
+        pos: "Noun (N) / Verb (V)",
+        posVi: "Danh từ / Động từ",
+        posEn: "Knowledge gained from doing something.",
         example: "She has a lot of work experience."
     },
 
@@ -841,7 +1034,7 @@ const words = [
         ipa: "/ˈpɜːrpəs/",
         pos: "Noun (N)",
         posVi: "Danh từ",
-        posEn: "The reason why something exists or is done.",
+        posEn: "The reason why something is done.",
         example: "What is the purpose of this meeting?"
     },
 
@@ -859,9 +1052,9 @@ const words = [
         en: "support",
         vi: "hỗ trợ",
         ipa: "/səˈpɔːrt/",
-        pos: "Verb (V) / Noun (N)",
-        posVi: "Động từ / Danh từ",
-        posEn: "To help someone or something.",
+        pos: "Noun (N) / Verb (V)",
+        posVi: "Danh từ / Động từ",
+        posEn: "Help given to someone; or to help someone.",
         example: "My family always supports me."
     },
 
@@ -991,7 +1184,7 @@ const words = [
         ipa: "/səˈdʒest/",
         pos: "Verb (V)",
         posVi: "Động từ",
-        posEn: "To give an idea or plan for someone to consider.",
+        posEn: "To give an idea for someone to consider.",
         example: "I suggest taking a short break."
     },
 
@@ -1011,17 +1204,17 @@ const words = [
         ipa: "/səkˈsiːd/",
         pos: "Verb (V)",
         posVi: "Động từ",
-        posEn: "To achieve what you wanted.",
+        posEn: "To achieve the desired result.",
         example: "If you work hard, you will succeed."
     },
 
     {
         en: "score",
-        vi: "điểm số",
+        vi: "điểm số / ghi điểm",
         ipa: "/skɔːr/",
         pos: "Noun (N) / Verb (V)",
         posVi: "Danh từ / Động từ",
-        posEn: "The number of points received in a test or game.",
+        posEn: "The number of points in a test or game.",
         example: "He got a high score in the test."
     },
 
@@ -1091,7 +1284,7 @@ const words = [
         ipa: "/ɪˈmædʒɪn/",
         pos: "Verb (V)",
         posVi: "Động từ",
-        posEn: "To create a picture or idea in your mind.",
+        posEn: "To form an idea or picture in your mind.",
         example: "Imagine living in another country."
     },
 
@@ -1233,86 +1426,229 @@ const words = [
         posVi: "Tính từ",
         posEn: "Giving attention to avoid mistakes.",
         example: "Be careful when crossing the road."
+    },
+
+    {
+        en: "common",
+        vi: "phổ biến",
+        ipa: "/ˈkɑːmən/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Happening often or found often.",
+        example: "This is a common problem."
+    },
+
+    {
+        en: "different",
+        vi: "khác nhau",
+        ipa: "/ˈdɪfrənt/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Not the same.",
+        example: "People have different opinions."
+    },
+
+    {
+        en: "effective",
+        vi: "hiệu quả",
+        ipa: "/ɪˈfektɪv/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Producing the desired result.",
+        example: "This is an effective way to learn."
+    },
+
+    {
+        en: "especially",
+        vi: "đặc biệt là",
+        ipa: "/ɪˈspeʃəli/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "More than usual or more importantly.",
+        example: "I like fruit, especially apples."
+    },
+
+    {
+        en: "probably",
+        vi: "có lẽ",
+        ipa: "/ˈprɑːbəbli/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "Used when something is likely but not certain.",
+        example: "She will probably come tomorrow."
+    },
+
+    {
+        en: "although",
+        vi: "mặc dù",
+        ipa: "/ɔːlˈðoʊ/",
+        pos: "Conjunction (Conj)",
+        posVi: "Liên từ",
+        posEn: "Used to introduce a contrast.",
+        example: "Although it was raining, we went outside."
+    },
+
+    {
+        en: "instead",
+        vi: "thay vào đó",
+        ipa: "/ɪnˈsted/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "In place of someone or something else.",
+        example: "We stayed home instead."
+    },
+
+    {
+        en: "however",
+        vi: "tuy nhiên",
+        ipa: "/haʊˈevər/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "Used to introduce a contrast.",
+        example: "It was expensive. However, I bought it."
+    },
+
+    {
+        en: "prevent",
+        vi: "ngăn chặn",
+        ipa: "/prɪˈvent/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To stop something from happening.",
+        example: "Exercise can help prevent illness."
     }
 
 ];
 
 
 /* =========================================================
-   BIẾN
+   BIẾN GAME
 ========================================================= */
-
-let currentIndex = 0;
 
 let mode = "en-vi";
 
-let correct = 0;
+let currentWord = null;
 
-let wrong = 0;
+let questionNumber = 1;
 
-let questionCount = 0;
+let correctCount = 0;
 
-let checked = false;
+let wrongCount = 0;
 
-let autoNextTimer = null;
+let skippedCount = 0;
 
-let favorites =
-    JSON.parse(
-        localStorage.getItem("b1Favorites")
-    ) || [];
+let score = 0;
+
+let questionAnswered = false;
+
+let gameResults = [];
 
 
 /* =========================================================
-   CHỌN TỪ NGẪU NHIÊN
+   CHỌN TỪ RANDOM
 ========================================================= */
 
-function randomWord() {
+function getRandomWord() {
 
-    /*
-       Không loại từ đã xuất hiện.
-       Vì vậy cùng một từ có thể xuất hiện
-       nhiều lần liên tiếp.
-    */
-
-    currentIndex =
+    const index =
         Math.floor(
             Math.random() * words.length
         );
+
+    return words[index];
 }
 
 
 /* =========================================================
-   HIỂN THỊ TỪ
+   PHÁT ÂM
 ========================================================= */
 
-function displayWord() {
+function speak(text, lang, rate = 1) {
 
-    clearTimeout(autoNextTimer);
+    if (!("speechSynthesis" in window)) {
+        return;
+    }
 
-    const word =
-        words[currentIndex];
+    speechSynthesis.cancel();
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    utterance.lang = lang;
+
+    utterance.rate = rate;
+
+    utterance.pitch = 1;
+
+    utterance.volume = 1;
+
+    speechSynthesis.speak(utterance);
+}
 
 
-    const question =
-        document.getElementById("question");
+/* =========================================================
+   PHÁT ÂM CÂU HỎI
+========================================================= */
 
-    const label =
-        document.getElementById("questionLabel");
+function speakQuestion(rate = 1) {
 
-    const ipa =
-        document.getElementById("ipa");
+    if (!currentWord) {
+        return;
+    }
+
+    /*
+       English → Việt:
+       đọc từ/câu hỏi tiếng Anh.
+
+       Việt → English:
+       đọc nghĩa tiếng Việt.
+    */
+
+    if (mode === "en-vi") {
+
+        speak(
+            currentWord.en,
+            "en-US",
+            rate
+        );
+
+    } else {
+
+        speak(
+            currentWord.vi,
+            "vi-VN",
+            rate
+        );
+    }
+}
+
+
+/* =========================================================
+   HIỂN THỊ CÂU
+========================================================= */
+
+function displayQuestion() {
+
+    currentWord =
+        getRandomWord();
+
+    questionAnswered = false;
+
+
+    document
+        .getElementById("result")
+        .style.display = "none";
+
+
+    document
+        .getElementById("wordInfo")
+        .style.display = "none";
+
 
     const input =
-        document.getElementById("answerInput");
-
-    const result =
-        document.getElementById("result");
-
-    const wordInfo =
-        document.getElementById("wordInfo");
-
-
-    checked = false;
+        document.getElementById(
+            "answerInput"
+        );
 
 
     input.value = "";
@@ -1321,47 +1657,62 @@ function displayWord() {
         "#cbd5e1";
 
 
-    result.style.display =
-        "none";
-
-
-    wordInfo.style.display =
-        "none";
-
-
     if (mode === "en-vi") {
 
-        question.textContent =
-            word.en;
+        document
+            .getElementById(
+                "questionLabel"
+            )
+            .textContent =
+            "Hãy viết nghĩa tiếng Việt:";
 
-        label.textContent =
-            "Hãy viết nghĩa tiếng Việt của từ:";
+
+        document
+            .getElementById(
+                "question"
+            )
+            .textContent =
+            currentWord.en;
+
 
         input.placeholder =
             "Ví dụ: cải thiện";
 
-    }
+    } else {
 
-    else {
-
-        question.textContent =
-            word.vi;
-
-        label.textContent =
+        document
+            .getElementById(
+                "questionLabel"
+            )
+            .textContent =
             "Hãy viết từ tiếng Anh:";
+
+
+        document
+            .getElementById(
+                "question"
+            )
+            .textContent =
+            currentWord.vi;
+
 
         input.placeholder =
             "Ví dụ: improve";
     }
 
 
-    ipa.textContent =
-        word.ipa;
+    document
+        .getElementById(
+            "ipa"
+        )
+        .textContent =
+        currentWord.ipa;
 
-
-    updateFavoriteButton();
 
     updateProgress();
+
+
+    input.focus();
 
 
     /*
@@ -1370,13 +1721,12 @@ function displayWord() {
 
     setTimeout(
         function() {
-            speakCurrent(1);
+
+            speakQuestion(1);
+
         },
-        200
+        300
     );
-
-
-    input.focus();
 }
 
 
@@ -1385,6 +1735,12 @@ function displayWord() {
 ========================================================= */
 
 function setMode(newMode) {
+
+    /*
+       Chỉ cho đổi chế độ giữa game.
+       Nếu đang giữa câu thì câu hiện tại
+       sẽ được tạo lại.
+    */
 
     mode = newMode;
 
@@ -1405,7 +1761,7 @@ function setMode(newMode) {
         );
 
 
-    displayWord();
+    displayQuestion();
 }
 
 
@@ -1424,33 +1780,90 @@ function normalize(text) {
             ""
         )
         .replace(
-            /[.,!?]/g,
+            /[.,!?;:]/g,
             ""
         );
 }
 
 
 /* =========================================================
-   KIỂM TRA
+   HIỆN THÔNG TIN TỪ
+========================================================= */
+
+function showWordInformation() {
+
+    document
+        .getElementById(
+            "correctAnswer"
+        )
+        .textContent =
+        mode === "en-vi"
+            ? currentWord.vi
+            : currentWord.en;
+
+
+    document
+        .getElementById(
+            "infoIPA"
+        )
+        .textContent =
+        currentWord.ipa;
+
+
+    document
+        .getElementById(
+            "infoPOS"
+        )
+        .textContent =
+        currentWord.pos;
+
+
+    document
+        .getElementById(
+            "infoPOSVI"
+        )
+        .textContent =
+        currentWord.posVi;
+
+
+    document
+        .getElementById(
+            "infoPOSEN"
+        )
+        .textContent =
+        currentWord.posEn;
+
+
+    document
+        .getElementById(
+            "example"
+        )
+        .textContent =
+        currentWord.example;
+
+
+    document
+        .getElementById(
+            "wordInfo"
+        )
+        .style.display =
+        "block";
+}
+
+
+/* =========================================================
+   KIỂM TRA ĐÁP ÁN
 ========================================================= */
 
 function checkAnswer() {
 
     /*
-       Nếu đáp án đang hiển thị:
-       Enter lần nữa sẽ sang từ mới.
+       Nếu đã đúng rồi thì không làm gì.
     */
 
-    if (checked) {
-
-        nextRandomWord();
-
+    if (questionAnswered) {
         return;
     }
-
-
-    const word =
-        words[currentIndex];
 
 
     const input =
@@ -1460,9 +1873,7 @@ function checkAnswer() {
 
 
     const userAnswer =
-        normalize(
-            input.value
-        );
+        normalize(input.value);
 
 
     if (!userAnswer) {
@@ -1476,37 +1887,29 @@ function checkAnswer() {
     }
 
 
-    let correctAnswer;
+    const correctAnswer =
+        mode === "en-vi"
+            ? normalize(currentWord.vi)
+            : normalize(currentWord.en);
 
 
-    if (mode === "en-vi") {
-
-        correctAnswer =
-            normalize(word.vi);
-
-    }
-
-    else {
-
-        correctAnswer =
-            normalize(word.en);
-
-    }
-
-
-    /* =====================
+    /* =========================
        ĐÚNG
-    ===================== */
+    ========================= */
 
     if (
         userAnswer === correctAnswer
     ) {
 
-        correct++;
+        correctCount++;
 
-        questionCount++;
+        score++;
 
-        checked = true;
+        questionAnswered = true;
+
+
+        input.style.borderColor =
+            "#16a34a";
 
 
         showResult(
@@ -1515,188 +1918,113 @@ function checkAnswer() {
         );
 
 
-        input.style.borderColor =
-            "#16a34a";
-
-
-        /*
-           Hiện thông tin từ
-           ngay cả khi đúng.
-        */
-
         showWordInformation();
+
+
+        gameResults.push({
+
+            question:
+                mode === "en-vi"
+                    ? currentWord.en
+                    : currentWord.vi,
+
+            userAnswer:
+                input.value,
+
+            correctAnswer:
+                mode === "en-vi"
+                    ? currentWord.vi
+                    : currentWord.en,
+
+            status: "correct"
+        });
 
 
         updateScore();
 
-        saveProgress();
+
+        /*
+           Đọc lại câu hỏi
+           theo đúng ngôn ngữ câu hỏi.
+        */
+
+        speakQuestion(1);
 
 
         /*
-           Phát âm lại từ vừa trả lời
-           đúng.
+           Tự động sang câu tiếp theo.
         */
 
-        speakCurrent(1);
+        setTimeout(
+            function() {
 
+                nextQuestion();
 
-        /*
-           Sau 1 giây sang từ ngẫu nhiên.
-        */
+            },
+            1000
+        );
 
-        autoNextTimer =
-            setTimeout(
-                function() {
-
-                    nextRandomWord();
-
-                },
-                1000
-            );
     }
 
 
-    /* =====================
+    /* =========================
        SAI
-    ===================== */
+    ========================= */
 
     else {
 
-        wrong++;
-
-        questionCount++;
+        wrongCount++;
 
 
         /*
-           Không chuyển câu.
+           KHÔNG tăng questionNumber.
+           Câu vẫn ở nguyên.
         */
-
-        checked = false;
-
-
-        showResult(
-            "❌ Sai! Đáp án đúng đã hiện bên dưới. Hãy học lại từ này rồi thử lại.",
-            "wrong"
-        );
 
 
         input.style.borderColor =
             "#dc2626";
 
 
-        /*
-           NGAY LẬP TỨC HIỆN ĐÁP ÁN
-           + IPA
-           + TỪ LOẠI
-           + GIẢI THÍCH
-           + VÍ DỤ
-        */
+        showResult(
+            "❌ Sai rồi! Đáp án đúng đã hiện bên dưới. Hãy thử lại.",
+            "wrong"
+        );
+
 
         showWordInformation();
 
 
+        updateScore();
+
+
         /*
-           Tự động thêm từ sai
-           vào danh sách ôn lại.
+           Đọc đáp án đúng.
+           Nếu câu hỏi là English → đọc đáp án tiếng Việt.
+           Nếu câu hỏi là Việt → đọc đáp án tiếng Anh.
         */
 
-        if (
-            !favorites.includes(
-                word.en
-            )
-        ) {
+        if (mode === "en-vi") {
 
-            favorites.push(
-                word.en
+            speak(
+                currentWord.vi,
+                "vi-VN",
+                0.8
             );
 
-            saveFavorites();
+        } else {
+
+            speak(
+                currentWord.en,
+                "en-US",
+                0.8
+            );
         }
 
 
-        updateScore();
-
-        saveProgress();
-
-
-        /*
-           Phát âm lại từ để bố nghe.
-        */
-
-        speakCurrent(0.8);
-
-
         input.focus();
+
     }
-}
-
-
-/* =========================================================
-   HIỆN THÔNG TIN CHI TIẾT
-========================================================= */
-
-function showWordInformation() {
-
-    const word =
-        words[currentIndex];
-
-
-    document
-        .getElementById(
-            "correctAnswer"
-        )
-        .textContent =
-        mode === "en-vi"
-            ? word.vi
-            : word.en;
-
-
-    document
-        .getElementById(
-            "infoIPA"
-        )
-        .textContent =
-        word.ipa;
-
-
-    document
-        .getElementById(
-            "infoPOS"
-        )
-        .textContent =
-        word.pos;
-
-
-    document
-        .getElementById(
-            "infoPOSVI"
-        )
-        .textContent =
-        word.posVi;
-
-
-    document
-        .getElementById(
-            "infoPOSEN"
-        )
-        .textContent =
-        word.posEn;
-
-
-    document
-        .getElementById(
-            "example"
-        )
-        .textContent =
-        word.example;
-
-
-    document
-        .getElementById(
-            "wordInfo"
-        )
-        .style.display =
-        "block";
 }
 
 
@@ -1729,146 +2057,145 @@ function showResult(
 
 
 /* =========================================================
-   HIỆN ĐÁP ÁN
+   XEM ĐÁP ÁN
 ========================================================= */
 
 function showAnswer() {
 
     showWordInformation();
 
-    speakCurrent(0.8);
+
+    /*
+       Phát âm đáp án đúng.
+    */
+
+    if (mode === "en-vi") {
+
+        speak(
+            currentWord.vi,
+            "vi-VN",
+            0.8
+        );
+
+    } else {
+
+        speak(
+            currentWord.en,
+            "en-US",
+            0.8
+        );
+    }
 }
 
 
 /* =========================================================
-   PHÁT ÂM
+   BỎ QUA
 ========================================================= */
 
-function speakCurrent(
-    rate = 1
-) {
+function skipQuestion() {
 
-    const word =
-        words[currentIndex];
+    if (questionAnswered) {
+        return;
+    }
 
+
+    skippedCount++;
+
+
+    /*
+       Ghi câu bị bỏ qua vào kết quả.
+    */
+
+    gameResults.push({
+
+        question:
+            mode === "en-vi"
+                ? currentWord.en
+                : currentWord.vi,
+
+        userAnswer:
+            "Bỏ qua",
+
+        correctAnswer:
+            mode === "en-vi"
+                ? currentWord.vi
+                : currentWord.en,
+
+        status: "skipped"
+    });
+
+
+    showResult(
+        "⏭️ Đã bỏ qua câu này.",
+        "skipped"
+    );
+
+
+    /*
+       Tự động sang câu tiếp theo.
+    */
+
+    setTimeout(
+        function() {
+
+            nextQuestion();
+
+        },
+        300
+    );
+}
+
+
+/* =========================================================
+   CÂU TIẾP THEO
+========================================================= */
+
+function nextQuestion() {
 
     if (
-        !("speechSynthesis" in window)
+        questionNumber >= 10
     ) {
+
+        finishGame();
 
         return;
     }
 
 
-    /*
-       Hủy âm thanh đang đọc
-       để tránh chồng giọng.
-    */
-
-    speechSynthesis.cancel();
+    questionNumber++;
 
 
-    const speech =
-        new SpeechSynthesisUtterance(
-            word.en
-        );
-
-
-    speech.lang =
-        "en-US";
-
-
-    speech.rate =
-        rate;
-
-
-    speech.pitch =
-        1;
-
-
-    speech.volume =
-        1;
-
-
-    speechSynthesis.speak(
-        speech
-    );
+    displayQuestion();
 }
 
 
 /* =========================================================
-   TỪ NGẪU NHIÊN TIẾP THEO
-========================================================= */
-
-function nextRandomWord() {
-
-    clearTimeout(
-        autoNextTimer
-    );
-
-
-    randomWord();
-
-
-    displayWord();
-}
-
-
-/* =========================================================
-   TRỘN
-========================================================= */
-
-function shuffleWords() {
-
-    for (
-        let i = words.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random()
-                * (i + 1)
-            );
-
-
-        [
-            words[i],
-            words[j]
-        ] =
-        [
-            words[j],
-            words[i]
-        ];
-    }
-
-
-    randomWord();
-
-    displayWord();
-}
-
-
-/* =========================================================
-   TIẾN ĐỘ
+   CẬP NHẬT TIẾN ĐỘ
 ========================================================= */
 
 function updateProgress() {
 
     document
         .getElementById(
-            "questionCount"
+            "questionNumber"
         )
         .textContent =
-        questionCount;
+        questionNumber;
+
+
+    document
+        .getElementById(
+            "progressNumber"
+        )
+        .textContent =
+        questionNumber;
 
 
     const percent =
-        Math.min(
-            (questionCount % 20) / 20 * 100,
-            100
-        );
+        (
+            questionNumber /
+            10
+        ) * 100;
 
 
     document
@@ -1884,243 +2211,248 @@ function updateProgress() {
    ĐIỂM
 ========================================================= */
 
-function getAccuracy() {
-
-    const total =
-        correct + wrong;
-
-
-    if (total === 0) {
-
-        return 0;
-    }
-
-
-    return Math.round(
-        correct /
-        total *
-        100
-    );
-}
-
-
 function updateScore() {
 
     document
         .getElementById(
-            "correct"
+            "correctCount"
         )
         .textContent =
-        correct;
+        correctCount;
 
 
     document
         .getElementById(
-            "wrong"
+            "scoreCount"
         )
         .textContent =
-        wrong;
-
-
-    document
-        .getElementById(
-            "accuracy"
-        )
-        .textContent =
-        getAccuracy() + "%";
-
-
-    document
-        .getElementById(
-            "score"
-        )
-        .textContent =
-        correct;
+        score;
 }
 
 
 /* =========================================================
-   ÔN LẠI
+   KẾT THÚC GAME
 ========================================================= */
 
-function toggleFavorite() {
+function finishGame() {
 
-    const word =
-        words[currentIndex];
-
-
-    const index =
-        favorites.indexOf(
-            word.en
-        );
+    speechSynthesis.cancel();
 
 
-    if (index === -1) {
-
-        favorites.push(
-            word.en
-        );
-
-    }
-
-    else {
-
-        favorites.splice(
-            index,
-            1
-        );
-    }
+    document
+        .getElementById(
+            "gameScreen"
+        )
+        .style.display =
+        "none";
 
 
-    saveFavorites();
+    document
+        .getElementById(
+            "endScreen"
+        )
+        .style.display =
+        "block";
 
-    updateFavoriteButton();
+
+    document
+        .getElementById(
+            "finalCorrect"
+        )
+        .textContent =
+        correctCount;
+
+
+    document
+        .getElementById(
+            "finalWrong"
+        )
+        .textContent =
+        wrongCount;
+
+
+    document
+        .getElementById(
+            "finalSkipped"
+        )
+        .textContent =
+        skippedCount;
+
+
+    document
+        .getElementById(
+            "finalScore"
+        )
+        .textContent =
+        score + "/10";
+
+
+    createResultList();
 }
 
 
-function updateFavoriteButton() {
+/* =========================================================
+   TẠO DANH SÁCH 10 CÂU
+========================================================= */
 
-    const word =
-        words[currentIndex];
+function createResultList() {
 
-
-    const button =
+    const list =
         document.getElementById(
-            "favoriteBtn"
+            "resultList"
         );
 
 
-    if (
-        favorites.includes(
-            word.en
-        )
-    ) {
-
-        button.textContent =
-            "❤️ Đang ôn lại";
-
-        button.classList.add(
-            "favorite"
-        );
-
-    }
-
-    else {
-
-        button.textContent =
-            "♡ Ôn lại từ này";
-
-        button.classList.remove(
-            "favorite"
-        );
-    }
-}
+    list.innerHTML = "";
 
 
-function saveFavorites() {
+    gameResults.forEach(
+        function(item, index) {
 
-    localStorage.setItem(
-        "b1Favorites",
-        JSON.stringify(
-            favorites
-        )
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "result-row";
+
+
+            let statusHTML;
+
+
+            if (
+                item.status === "correct"
+            ) {
+
+                statusHTML =
+                    '<div class="result-status status-correct">' +
+                    '✅ Đúng' +
+                    '</div>';
+
+            }
+
+            else if (
+                item.status === "wrong"
+            ) {
+
+                statusHTML =
+                    '<div class="result-status status-wrong">' +
+                    '❌ Sai' +
+                    '</div>';
+
+            }
+
+            else {
+
+                statusHTML =
+                    '<div class="result-status status-skipped">' +
+                    '⏭️ Bỏ qua' +
+                    '</div>';
+            }
+
+
+            row.innerHTML = `
+
+                <div class="result-number">
+                    Câu ${index + 1}
+                </div>
+
+                <div class="result-question">
+                    ${escapeHTML(item.question)}
+                </div>
+
+                <div class="result-answer">
+                    Trả lời:
+                    <b>
+                        ${escapeHTML(item.userAnswer)}
+                    </b>
+                </div>
+
+                <div class="result-answer">
+                    Đáp án:
+                    <b>
+                        ${escapeHTML(item.correctAnswer)}
+                    </b>
+                </div>
+
+                ${statusHTML}
+
+            `;
+
+
+            list.appendChild(row);
+
+        }
     );
 }
 
 
 /* =========================================================
-   RESET
+   BẢO VỆ HTML
 ========================================================= */
 
-function resetGame() {
+function escapeHTML(text) {
 
-    const answer =
-        confirm(
-            "Bố có chắc muốn xóa điểm và làm lại không?"
+    const div =
+        document.createElement(
+            "div"
         );
 
+    div.textContent =
+        text;
 
-    if (!answer) {
-        return;
-    }
-
-
-    clearTimeout(
-        autoNextTimer
-    );
+    return div.innerHTML;
+}
 
 
-    correct = 0;
+/* =========================================================
+   CHƠI LẠI
+========================================================= */
 
-    wrong = 0;
+function restartGame() {
 
-    questionCount = 0;
+    speechSynthesis.cancel();
+
+
+    questionNumber = 1;
+
+    correctCount = 0;
+
+    wrongCount = 0;
+
+    skippedCount = 0;
+
+    score = 0;
+
+    questionAnswered = false;
+
+    gameResults = [];
+
+
+    document
+        .getElementById(
+            "gameScreen"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "endScreen"
+        )
+        .style.display =
+        "none";
 
 
     updateScore();
 
     updateProgress();
 
-    saveProgress();
 
-
-    randomWord();
-
-    displayWord();
-}
-
-
-/* =========================================================
-   LƯU ĐIỂM
-========================================================= */
-
-function saveProgress() {
-
-    localStorage.setItem(
-        "b1Score",
-        JSON.stringify({
-
-            correct:
-                correct,
-
-            wrong:
-                wrong,
-
-            questionCount:
-                questionCount
-        })
-    );
-}
-
-
-function loadProgress() {
-
-    const saved =
-        JSON.parse(
-            localStorage.getItem(
-                "b1Score"
-            )
-        );
-
-
-    if (!saved) {
-        return;
-    }
-
-
-    correct =
-        saved.correct || 0;
-
-    wrong =
-        saved.wrong || 0;
-
-    questionCount =
-        saved.questionCount || 0;
-
-
-    updateScore();
-
-    updateProgress();
+    displayQuestion();
 }
 
 
@@ -2144,20 +2476,19 @@ document
 
                 checkAnswer();
             }
-
         }
     );
 
 
 /* =========================================================
-   KHỞI ĐỘNG
+   BẮT ĐẦU GAME
 ========================================================= */
 
-loadProgress();
+updateScore();
 
-randomWord();
+updateProgress();
 
-displayWord();
+displayQuestion();
 
 </script>
 
