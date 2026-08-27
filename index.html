@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 English Vocabulary</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #eef2ff);
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+.container {
+    width: 95%;
+    max-width: 800px;
+    margin: 25px auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #1d4ed8;
+    font-size: 32px;
+}
+
+.header p {
+    color: #64748b;
+    margin-top: 8px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   CHẾ ĐỘ
+========================= */
+
+.mode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode button {
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    background: #e2e8f0;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mode button.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* =========================
+   ĐIỂM
+========================= */
+
+.score-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.score-item {
+    background: #f8fafc;
+    border-radius: 12px;
+    text-align: center;
+    padding: 12px 5px;
+    font-size: 14px;
+}
+
+.score-item strong {
+    display: block;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+/* =========================
+   CÂU HỎI
+========================= */
+
+.question-card {
+    background: #eff6ff;
+    border-radius: 18px;
+    padding: 30px 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question-label {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.question {
+    font-size: 42px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 7px;
+    word-break: break-word;
+}
+
+.ipa {
+    font-size: 21px;
+    color: #475569;
+    margin-bottom: 18px;
+}
+
+/* =========================
+   PHÁT ÂM
+========================= */
+
+.audio-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.audio-btn {
+    border: 1px solid #bfdbfe;
+    background: white;
+    color: #1d4ed8;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.audio-btn:hover {
+    background: #dbeafe;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.answer-area input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 18px;
+    outline: none;
+}
+
+.answer-area input:focus {
+    border-color: #2563eb;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.action-buttons button {
+    border: none;
+    padding: 13px;
+    border-radius: 11px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.check-btn {
+    background: #16a34a;
+    color: white;
+}
+
+.next-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.answer-btn {
+    background: #f59e0b;
+    color: white;
+}
+
+.reset-btn {
+    background: #64748b;
+    color: white;
+}
+
+/* =========================
+   EXTRA
+========================= */
+
+.extra-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.extra-buttons button {
+    border: none;
+    padding: 11px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: bold;
+}
+
+.favorite {
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
+}
+
+/* =========================
+   KẾT QUẢ
+========================= */
+
+.result {
+    display: none;
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.result.correct {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.result.wrong {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* =========================
+   THÔNG TIN TỪ
+========================= */
+
+.word-info {
+    display: none;
+    margin-top: 15px;
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: left;
+}
+
+.info-row {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-title {
+    font-weight: bold;
+    color: #334155;
+}
+
+.answer-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1d4ed8;
+    margin-top: 3px;
+}
+
+.info-ipa {
+    font-size: 20px;
+    color: #475569;
+}
+
+.pos-en {
+    color: #7c3aed;
+    font-weight: bold;
+}
+
+.pos-vi {
+    color: #059669;
+    font-weight: bold;
+}
+
+.example {
+    color: #475569;
+    font-style: italic;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container {
+    margin-top: 20px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 7px;
+}
+
+.progress-bar {
+    height: 9px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    transition: width 0.3s;
+}
+
+/* =========================
+   HƯỚNG DẪN
+========================= */
+
+.tip {
+    margin-top: 18px;
+    padding: 13px;
+    background: #f8fafc;
+    border-radius: 10px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        margin: 12px auto;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .question {
+        font-size: 32px;
+    }
+
+    .score-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📚 B1 English Vocabulary</h1>
+        <p>Học từ vựng ngẫu nhiên – có phát âm và giải thích</p>
+    </div>
+
+
+    <div class="card">
+
+        <!-- =====================
+             CHỌN CHẾ ĐỘ
+        ====================== -->
+
+        <div class="mode">
+
+            <button
+                id="enViBtn"
+                class="active"
+                onclick="setMode('en-vi')">
+                🇬🇧 English → 🇻🇳 Việt
+            </button>
+
+            <button
+                id="viEnBtn"
+                onclick="setMode('vi-en')">
+                🇻🇳 Việt → 🇬🇧 English
+            </button>
+
+        </div>
+
+
+        <!-- =====================
+             ĐIỂM
+        ====================== -->
+
+        <div class="score-box">
+
+            <div class="score-item">
+                ✅ Đúng
+                <strong id="correct">0</strong>
+            </div>
+
+            <div class="score-item">
+                ❌ Sai
+                <strong id="wrong">0</strong>
+            </div>
+
+            <div class="score-item">
+                🎯 Chính xác
+                <strong id="accuracy">0%</strong>
+            </div>
+
+            <div class="score-item">
+                ⭐ Điểm
+                <strong id="score">0</strong>
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             CÂU HỎI
+        ====================== -->
+
+        <div class="question-card">
+
+            <div
+                id="questionLabel"
+                class="question-label">
+                Hãy viết nghĩa tiếng Việt của từ:
+            </div>
+
+            <div
+                id="question"
+                class="question">
+                achieve
+            </div>
+
+            <div
+                id="ipa"
+                class="ipa">
+                /əˈtʃiːv/
+            </div>
+
+
+            <div class="audio-buttons">
+
+                <button
+                    class="audio-btn"
+                    onclick="speakCurrent(1)">
+                    🔊 Phát âm
+                </button>
+
+                <button
+                    class="audio-btn"
+                    onclick="speakCurrent(0.6)">
+                    🐢 Phát âm chậm
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             NHẬP ĐÁP ÁN
+        ====================== -->
+
+        <div class="answer-area">
+
+            <input
+                id="answerInput"
+                type="text"
+                placeholder="Nhập câu trả lời..."
+                autocomplete="off">
+
+        </div>
+
+
+        <!-- =====================
+             NÚT
+        ====================== -->
+
+        <div class="action-buttons">
+
+            <button
+                class="check-btn"
+                onclick="checkAnswer()">
+                ✅ Kiểm tra
+            </button>
+
+            <button
+                class="next-btn"
+                onclick="nextRandomWord()">
+                🎲 Từ ngẫu nhiên
+            </button>
+
+            <button
+                class="answer-btn"
+                onclick="showAnswer()">
+                👁️ Hiện đáp án
+            </button>
+
+            <button
+                class="reset-btn"
+                onclick="resetGame()">
+                🔄 Làm lại
+            </button>
+
+        </div>
+
+
+        <div class="extra-buttons">
+
+            <button
+                id="favoriteBtn"
+                onclick="toggleFavorite()">
+                ♡ Ôn lại từ này
+            </button>
+
+            <button
+                onclick="speakCurrent(0.6)">
+                🔊 Nghe lại chậm
+            </button>
+
+        </div>
+
+
+        <!-- =====================
+             KẾT QUẢ
+        ====================== -->
+
+        <div
+            id="result"
+            class="result">
+        </div>
+
+
+        <!-- =====================
+             THÔNG TIN
+        ====================== -->
+
+        <div
+            id="wordInfo"
+            class="word-info">
+
+
+            <div class="info-row">
+
+                <div class="info-title">
+                    ✅ Đáp án đúng:
+                </div>
+
+                <div
+                    id="correctAnswer"
+                    class="answer-text">
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info-title">
+                    🔤 Phiên âm:
+                </div>
+
+                <div
+                    id="infoIPA"
+                    class="info-ipa">
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info-title">
+                    📌 Từ loại:
+                </div>
+
+                <div
+                    id="infoPOS"
+                    class="pos-en">
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info-title">
+                    🇻🇳 Từ loại tiếng Việt:
+                </div>
+
+                <div
+                    id="infoPOSVI"
+                    class="pos-vi">
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info-title">
+                    🇬🇧 English meaning:
+                </div>
+
+                <div id="infoPOSEN">
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info-title">
+                    💬 Ví dụ:
+                </div>
+
+                <div
+                    id="example"
+                    class="example">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             TIẾN ĐỘ
+        ====================== -->
+
+        <div class="progress-container">
+
+            <div class="progress-text">
+
+                <span>
+                    Đã trả lời:
+                    <b id="questionCount">0</b>
+                </span>
+
+                <span>
+                    🎲 Ngẫu nhiên
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="tip">
+
+            💡 <b>Đúng:</b> hiện kết quả → phát âm → 1 giây sau sang từ mới.
+            <br>
+
+            ❌ <b>Sai:</b> không sang câu mới → đáp án và giải thích xuất hiện ngay.
+            <br>
+
+            🔊 Mỗi khi xuất hiện từ mới, từ tiếng Anh sẽ tự động được phát âm.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   DỮ LIỆU TỪ VỰNG
+========================================================= */
+
+const words = [
+
+    {
+        en: "achieve",
+        vi: "đạt được",
+        ipa: "/əˈtʃiːv/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To successfully reach a goal.",
+        example: "She worked hard to achieve her goal."
+    },
+
+    {
+        en: "avoid",
+        vi: "tránh",
+        ipa: "/əˈvɔɪd/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To stay away from something.",
+        example: "Try to avoid making the same mistake."
+    },
+
+    {
+        en: "benefit",
+        vi: "lợi ích",
+        ipa: "/ˈbenɪfɪt/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "An advantage or positive result.",
+        example: "Exercise has many health benefits."
+    },
+
+    {
+        en: "choice",
+        vi: "sự lựa chọn",
+        ipa: "/tʃɔɪs/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "An act of choosing between two or more things.",
+        example: "You have to make an important choice."
+    },
+
+    {
+        en: "contribute",
+        vi: "đóng góp",
+        ipa: "/kənˈtrɪbjuːt/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To give something to help achieve a goal.",
+        example: "Everyone can contribute to the project."
+    },
+
+    {
+        en: "decision",
+        vi: "quyết định",
+        ipa: "/dɪˈsɪʒən/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "A choice made after thinking about something.",
+        example: "It was a difficult decision."
+    },
+
+    {
+        en: "environment",
+        vi: "môi trường",
+        ipa: "/ɪnˈvaɪrənmənt/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "The natural world and the conditions around us.",
+        example: "We should protect the environment."
+    },
+
+    {
+        en: "experience",
+        vi: "kinh nghiệm",
+        ipa: "/ɪkˈspɪəriəns/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "Knowledge or skill gained by doing something.",
+        example: "She has a lot of work experience."
+    },
+
+    {
+        en: "improve",
+        vi: "cải thiện",
+        ipa: "/ɪmˈpruːv/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To make something better.",
+        example: "I want to improve my English."
+    },
+
+    {
+        en: "influence",
+        vi: "ảnh hưởng",
+        ipa: "/ˈɪnfluəns/",
+        pos: "Noun (N) / Verb (V)",
+        posVi: "Danh từ / Động từ",
+        posEn: "The power to affect someone or something.",
+        example: "Parents have a strong influence on children."
+    },
+
+    {
+        en: "opportunity",
+        vi: "cơ hội",
+        ipa: "/ˌɑːpərˈtuːnəti/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "A chance to do something.",
+        example: "This is a great opportunity."
+    },
+
+    {
+        en: "purpose",
+        vi: "mục đích",
+        ipa: "/ˈpɜːrpəs/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "The reason why something exists or is done.",
+        example: "What is the purpose of this meeting?"
+    },
+
+    {
+        en: "require",
+        vi: "yêu cầu / đòi hỏi",
+        ipa: "/rɪˈkwaɪər/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To need something.",
+        example: "This job requires good English skills."
+    },
+
+    {
+        en: "support",
+        vi: "hỗ trợ",
+        ipa: "/səˈpɔːrt/",
+        pos: "Verb (V) / Noun (N)",
+        posVi: "Động từ / Danh từ",
+        posEn: "To help someone or something.",
+        example: "My family always supports me."
+    },
+
+    {
+        en: "effort",
+        vi: "nỗ lực",
+        ipa: "/ˈefərt/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "An attempt to do something.",
+        example: "Your effort will be rewarded."
+    },
+
+    {
+        en: "reason",
+        vi: "lý do",
+        ipa: "/ˈriːzən/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "A cause or explanation for something.",
+        example: "What is the reason for your decision?"
+    },
+
+    {
+        en: "lesson",
+        vi: "bài học",
+        ipa: "/ˈlesən/",
+        pos: "Noun (N)",
+        posVi: "Danh từ",
+        posEn: "Something learned through study or experience.",
+        example: "Every mistake teaches us a lesson."
+    },
+
+    {
+        en: "forget",
+        vi: "quên",
+        ipa: "/fərˈɡet/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To fail to remember something.",
+        example: "Don't forget to call me."
+    },
+
+    {
+        en: "understand",
+        vi: "hiểu",
+        ipa: "/ˌʌndərˈstænd/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To know the meaning of something.",
+        example: "I don't understand this question."
+    },
+
+    {
+        en: "grow",
+        vi: "phát triển / lớn lên",
+        ipa: "/ɡroʊ/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To develop or become bigger.",
+        example: "Children grow very quickly."
+    },
+
+    {
+        en: "affect",
+        vi: "ảnh hưởng",
+        ipa: "/əˈfekt/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To produce a change in someone or something.",
+        example: "Stress can affect your health."
+    },
+
+    {
+        en: "provide",
+        vi: "cung cấp",
+        ipa: "/prəˈvaɪd/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To give something that is needed.",
+        example: "The school provides free books."
+    },
+
+    {
+        en: "develop",
+        vi: "phát triển",
+        ipa: "/dɪˈveləp/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To grow or improve something.",
+        example: "We need to develop new skills."
+    },
+
+    {
+        en: "increase",
+        vi: "tăng",
+        ipa: "/ɪnˈkriːs/",
+        pos: "Verb (V) / Noun (N)",
+        posVi: "Động từ / Danh từ",
+        posEn: "To become greater in amount or number.",
+        example: "Prices continue to increase."
+    },
+
+    {
+        en: "reduce",
+        vi: "giảm",
+        ipa: "/rɪˈduːs/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To make something smaller or less.",
+        example: "We need to reduce pollution."
+    },
+
+    {
+        en: "solve",
+        vi: "giải quyết",
+        ipa: "/sɑːlv/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To find an answer to a problem.",
+        example: "Can you solve this problem?"
+    },
+
+    {
+        en: "suggest",
+        vi: "đề xuất / gợi ý",
+        ipa: "/səˈdʒest/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To give an idea or plan for someone to consider.",
+        example: "I suggest taking a short break."
+    },
+
+    {
+        en: "prepare",
+        vi: "chuẩn bị",
+        ipa: "/prɪˈper/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To make something ready.",
+        example: "I need to prepare for the exam."
+    },
+
+    {
+        en: "succeed",
+        vi: "thành công",
+        ipa: "/səkˈsiːd/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To achieve what you wanted.",
+        example: "If you work hard, you will succeed."
+    },
+
+    {
+        en: "score",
+        vi: "điểm số",
+        ipa: "/skɔːr/",
+        pos: "Noun (N) / Verb (V)",
+        posVi: "Danh từ / Động từ",
+        posEn: "The number of points received in a test or game.",
+        example: "He got a high score in the test."
+    },
+
+    {
+        en: "necessary",
+        vi: "cần thiết",
+        ipa: "/ˈnesəseri/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Needed for a particular purpose.",
+        example: "It is necessary to study regularly."
+    },
+
+    {
+        en: "important",
+        vi: "quan trọng",
+        ipa: "/ɪmˈpɔːrtənt/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Having great value or importance.",
+        example: "English is important for my future."
+    },
+
+    {
+        en: "possible",
+        vi: "có thể",
+        ipa: "/ˈpɑːsəbəl/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Able to happen or be done.",
+        example: "Is it possible to change the date?"
+    },
+
+    {
+        en: "available",
+        vi: "có sẵn",
+        ipa: "/əˈveɪləbəl/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Ready to be used or obtained.",
+        example: "The information is available online."
+    },
+
+    {
+        en: "similar",
+        vi: "tương tự",
+        ipa: "/ˈsɪmələr/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Almost the same but not exactly the same.",
+        example: "The two situations are very similar."
+    },
+
+    {
+        en: "include",
+        vi: "bao gồm",
+        ipa: "/ɪnˈkluːd/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To contain something as part of a whole.",
+        example: "The price includes breakfast."
+    },
+
+    {
+        en: "imagine",
+        vi: "tưởng tượng",
+        ipa: "/ɪˈmædʒɪn/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To create a picture or idea in your mind.",
+        example: "Imagine living in another country."
+    },
+
+    {
+        en: "depend",
+        vi: "phụ thuộc",
+        ipa: "/dɪˈpend/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To be affected by something else.",
+        example: "Success depends on hard work."
+    },
+
+    {
+        en: "continue",
+        vi: "tiếp tục",
+        ipa: "/kənˈtɪnjuː/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To keep doing something.",
+        example: "Please continue reading."
+    },
+
+    {
+        en: "consider",
+        vi: "cân nhắc",
+        ipa: "/kənˈsɪdər/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To think carefully about something.",
+        example: "We need to consider all options."
+    },
+
+    {
+        en: "compare",
+        vi: "so sánh",
+        ipa: "/kəmˈper/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To examine things to see similarities and differences.",
+        example: "Don't compare yourself with others."
+    },
+
+    {
+        en: "create",
+        vi: "tạo ra",
+        ipa: "/kriˈeɪt/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To make something new.",
+        example: "They want to create a new product."
+    },
+
+    {
+        en: "accept",
+        vi: "chấp nhận",
+        ipa: "/əkˈsept/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To agree to receive or take something.",
+        example: "She accepted the job offer."
+    },
+
+    {
+        en: "refuse",
+        vi: "từ chối",
+        ipa: "/rɪˈfjuːz/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To say that you will not do or accept something.",
+        example: "He refused to answer the question."
+    },
+
+    {
+        en: "realize",
+        vi: "nhận ra",
+        ipa: "/ˈriːəlaɪz/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To suddenly understand or become aware of something.",
+        example: "I suddenly realized my mistake."
+    },
+
+    {
+        en: "discover",
+        vi: "khám phá / phát hiện",
+        ipa: "/dɪˈskʌvər/",
+        pos: "Verb (V)",
+        posVi: "Động từ",
+        posEn: "To find something for the first time.",
+        example: "Scientists discovered a new method."
+    },
+
+    {
+        en: "carefully",
+        vi: "một cách cẩn thận",
+        ipa: "/ˈkerfəli/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "In a careful way.",
+        example: "Please read the instructions carefully."
+    },
+
+    {
+        en: "usually",
+        vi: "thường thường",
+        ipa: "/ˈjuːʒuəli/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "In the way that normally happens.",
+        example: "I usually study English at night."
+    },
+
+    {
+        en: "quickly",
+        vi: "nhanh chóng",
+        ipa: "/ˈkwɪkli/",
+        pos: "Adverb (Adv)",
+        posVi: "Trạng từ",
+        posEn: "At a fast speed.",
+        example: "He finished the work quickly."
+    },
+
+    {
+        en: "successful",
+        vi: "thành công",
+        ipa: "/səkˈsesfəl/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Achieving the desired result.",
+        example: "She had a successful career."
+    },
+
+    {
+        en: "careful",
+        vi: "cẩn thận",
+        ipa: "/ˈkerfəl/",
+        pos: "Adjective (Adj)",
+        posVi: "Tính từ",
+        posEn: "Giving attention to avoid mistakes.",
+        example: "Be careful when crossing the road."
+    }
+
+];
+
+
+/* =========================================================
+   BIẾN
+========================================================= */
+
+let currentIndex = 0;
+
+let mode = "en-vi";
+
+let correct = 0;
+
+let wrong = 0;
+
+let questionCount = 0;
+
+let checked = false;
+
+let autoNextTimer = null;
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem("b1Favorites")
+    ) || [];
+
+
+/* =========================================================
+   CHỌN TỪ NGẪU NHIÊN
+========================================================= */
+
+function randomWord() {
+
+    /*
+       Không loại từ đã xuất hiện.
+       Vì vậy cùng một từ có thể xuất hiện
+       nhiều lần liên tiếp.
+    */
+
+    currentIndex =
+        Math.floor(
+            Math.random() * words.length
+        );
+}
+
+
+/* =========================================================
+   HIỂN THỊ TỪ
+========================================================= */
+
+function displayWord() {
+
+    clearTimeout(autoNextTimer);
+
+    const word =
+        words[currentIndex];
+
+
+    const question =
+        document.getElementById("question");
+
+    const label =
+        document.getElementById("questionLabel");
+
+    const ipa =
+        document.getElementById("ipa");
+
+    const input =
+        document.getElementById("answerInput");
+
+    const result =
+        document.getElementById("result");
+
+    const wordInfo =
+        document.getElementById("wordInfo");
+
+
+    checked = false;
+
+
+    input.value = "";
+
+    input.style.borderColor =
+        "#cbd5e1";
+
+
+    result.style.display =
+        "none";
+
+
+    wordInfo.style.display =
+        "none";
+
+
+    if (mode === "en-vi") {
+
+        question.textContent =
+            word.en;
+
+        label.textContent =
+            "Hãy viết nghĩa tiếng Việt của từ:";
+
+        input.placeholder =
+            "Ví dụ: cải thiện";
+
+    }
+
+    else {
+
+        question.textContent =
+            word.vi;
+
+        label.textContent =
+            "Hãy viết từ tiếng Anh:";
+
+        input.placeholder =
+            "Ví dụ: improve";
+    }
+
+
+    ipa.textContent =
+        word.ipa;
+
+
+    updateFavoriteButton();
+
+    updateProgress();
+
+
+    /*
+       TỰ ĐỘNG PHÁT ÂM
+    */
+
+    setTimeout(
+        function() {
+            speakCurrent(1);
+        },
+        200
+    );
+
+
+    input.focus();
+}
+
+
+/* =========================================================
+   ĐỔI CHẾ ĐỘ
+========================================================= */
+
+function setMode(newMode) {
+
+    mode = newMode;
+
+
+    document
+        .getElementById("enViBtn")
+        .classList.toggle(
+            "active",
+            mode === "en-vi"
+        );
+
+
+    document
+        .getElementById("viEnBtn")
+        .classList.toggle(
+            "active",
+            mode === "vi-en"
+        );
+
+
+    displayWord();
+}
+
+
+/* =========================================================
+   CHUẨN HÓA
+========================================================= */
+
+function normalize(text) {
+
+    return text
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .replace(
+            /[.,!?]/g,
+            ""
+        );
+}
+
+
+/* =========================================================
+   KIỂM TRA
+========================================================= */
+
+function checkAnswer() {
+
+    /*
+       Nếu đáp án đang hiển thị:
+       Enter lần nữa sẽ sang từ mới.
+    */
+
+    if (checked) {
+
+        nextRandomWord();
+
+        return;
+    }
+
+
+    const word =
+        words[currentIndex];
+
+
+    const input =
+        document.getElementById(
+            "answerInput"
+        );
+
+
+    const userAnswer =
+        normalize(
+            input.value
+        );
+
+
+    if (!userAnswer) {
+
+        showResult(
+            "⚠️ Bố chưa nhập đáp án.",
+            "wrong"
+        );
+
+        return;
+    }
+
+
+    let correctAnswer;
+
+
+    if (mode === "en-vi") {
+
+        correctAnswer =
+            normalize(word.vi);
+
+    }
+
+    else {
+
+        correctAnswer =
+            normalize(word.en);
+
+    }
+
+
+    /* =====================
+       ĐÚNG
+    ===================== */
+
+    if (
+        userAnswer === correctAnswer
+    ) {
+
+        correct++;
+
+        questionCount++;
+
+        checked = true;
+
+
+        showResult(
+            "✅ Chính xác!",
+            "correct"
+        );
+
+
+        input.style.borderColor =
+            "#16a34a";
+
+
+        /*
+           Hiện thông tin từ
+           ngay cả khi đúng.
+        */
+
+        showWordInformation();
+
+
+        updateScore();
+
+        saveProgress();
+
+
+        /*
+           Phát âm lại từ vừa trả lời
+           đúng.
+        */
+
+        speakCurrent(1);
+
+
+        /*
+           Sau 1 giây sang từ ngẫu nhiên.
+        */
+
+        autoNextTimer =
+            setTimeout(
+                function() {
+
+                    nextRandomWord();
+
+                },
+                1000
+            );
+    }
+
+
+    /* =====================
+       SAI
+    ===================== */
+
+    else {
+
+        wrong++;
+
+        questionCount++;
+
+
+        /*
+           Không chuyển câu.
+        */
+
+        checked = false;
+
+
+        showResult(
+            "❌ Sai! Đáp án đúng đã hiện bên dưới. Hãy học lại từ này rồi thử lại.",
+            "wrong"
+        );
+
+
+        input.style.borderColor =
+            "#dc2626";
+
+
+        /*
+           NGAY LẬP TỨC HIỆN ĐÁP ÁN
+           + IPA
+           + TỪ LOẠI
+           + GIẢI THÍCH
+           + VÍ DỤ
+        */
+
+        showWordInformation();
+
+
+        /*
+           Tự động thêm từ sai
+           vào danh sách ôn lại.
+        */
+
+        if (
+            !favorites.includes(
+                word.en
+            )
+        ) {
+
+            favorites.push(
+                word.en
+            );
+
+            saveFavorites();
+        }
+
+
+        updateScore();
+
+        saveProgress();
+
+
+        /*
+           Phát âm lại từ để bố nghe.
+        */
+
+        speakCurrent(0.8);
+
+
+        input.focus();
+    }
+}
+
+
+/* =========================================================
+   HIỆN THÔNG TIN CHI TIẾT
+========================================================= */
+
+function showWordInformation() {
+
+    const word =
+        words[currentIndex];
+
+
+    document
+        .getElementById(
+            "correctAnswer"
+        )
+        .textContent =
+        mode === "en-vi"
+            ? word.vi
+            : word.en;
+
+
+    document
+        .getElementById(
+            "infoIPA"
+        )
+        .textContent =
+        word.ipa;
+
+
+    document
+        .getElementById(
+            "infoPOS"
+        )
+        .textContent =
+        word.pos;
+
+
+    document
+        .getElementById(
+            "infoPOSVI"
+        )
+        .textContent =
+        word.posVi;
+
+
+    document
+        .getElementById(
+            "infoPOSEN"
+        )
+        .textContent =
+        word.posEn;
+
+
+    document
+        .getElementById(
+            "example"
+        )
+        .textContent =
+        word.example;
+
+
+    document
+        .getElementById(
+            "wordInfo"
+        )
+        .style.display =
+        "block";
+}
+
+
+/* =========================================================
+   HIỆN KẾT QUẢ
+========================================================= */
+
+function showResult(
+    text,
+    type
+) {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.className =
+        "result " + type;
+
+
+    result.textContent =
+        text;
+
+
+    result.style.display =
+        "block";
+}
+
+
+/* =========================================================
+   HIỆN ĐÁP ÁN
+========================================================= */
+
+function showAnswer() {
+
+    showWordInformation();
+
+    speakCurrent(0.8);
+}
+
+
+/* =========================================================
+   PHÁT ÂM
+========================================================= */
+
+function speakCurrent(
+    rate = 1
+) {
+
+    const word =
+        words[currentIndex];
+
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        return;
+    }
+
+
+    /*
+       Hủy âm thanh đang đọc
+       để tránh chồng giọng.
+    */
+
+    speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            word.en
+        );
+
+
+    speech.lang =
+        "en-US";
+
+
+    speech.rate =
+        rate;
+
+
+    speech.pitch =
+        1;
+
+
+    speech.volume =
+        1;
+
+
+    speechSynthesis.speak(
+        speech
+    );
+}
+
+
+/* =========================================================
+   TỪ NGẪU NHIÊN TIẾP THEO
+========================================================= */
+
+function nextRandomWord() {
+
+    clearTimeout(
+        autoNextTimer
+    );
+
+
+    randomWord();
+
+
+    displayWord();
+}
+
+
+/* =========================================================
+   TRỘN
+========================================================= */
+
+function shuffleWords() {
+
+    for (
+        let i = words.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random()
+                * (i + 1)
+            );
+
+
+        [
+            words[i],
+            words[j]
+        ] =
+        [
+            words[j],
+            words[i]
+        ];
+    }
+
+
+    randomWord();
+
+    displayWord();
+}
+
+
+/* =========================================================
+   TIẾN ĐỘ
+========================================================= */
+
+function updateProgress() {
+
+    document
+        .getElementById(
+            "questionCount"
+        )
+        .textContent =
+        questionCount;
+
+
+    const percent =
+        Math.min(
+            (questionCount % 20) / 20 * 100,
+            100
+        );
+
+
+    document
+        .getElementById(
+            "progressFill"
+        )
+        .style.width =
+        percent + "%";
+}
+
+
+/* =========================================================
+   ĐIỂM
+========================================================= */
+
+function getAccuracy() {
+
+    const total =
+        correct + wrong;
+
+
+    if (total === 0) {
+
+        return 0;
+    }
+
+
+    return Math.round(
+        correct /
+        total *
+        100
+    );
+}
+
+
+function updateScore() {
+
+    document
+        .getElementById(
+            "correct"
+        )
+        .textContent =
+        correct;
+
+
+    document
+        .getElementById(
+            "wrong"
+        )
+        .textContent =
+        wrong;
+
+
+    document
+        .getElementById(
+            "accuracy"
+        )
+        .textContent =
+        getAccuracy() + "%";
+
+
+    document
+        .getElementById(
+            "score"
+        )
+        .textContent =
+        correct;
+}
+
+
+/* =========================================================
+   ÔN LẠI
+========================================================= */
+
+function toggleFavorite() {
+
+    const word =
+        words[currentIndex];
+
+
+    const index =
+        favorites.indexOf(
+            word.en
+        );
+
+
+    if (index === -1) {
+
+        favorites.push(
+            word.en
+        );
+
+    }
+
+    else {
+
+        favorites.splice(
+            index,
+            1
+        );
+    }
+
+
+    saveFavorites();
+
+    updateFavoriteButton();
+}
+
+
+function updateFavoriteButton() {
+
+    const word =
+        words[currentIndex];
+
+
+    const button =
+        document.getElementById(
+            "favoriteBtn"
+        );
+
+
+    if (
+        favorites.includes(
+            word.en
+        )
+    ) {
+
+        button.textContent =
+            "❤️ Đang ôn lại";
+
+        button.classList.add(
+            "favorite"
+        );
+
+    }
+
+    else {
+
+        button.textContent =
+            "♡ Ôn lại từ này";
+
+        button.classList.remove(
+            "favorite"
+        );
+    }
+}
+
+
+function saveFavorites() {
+
+    localStorage.setItem(
+        "b1Favorites",
+        JSON.stringify(
+            favorites
+        )
+    );
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetGame() {
+
+    const answer =
+        confirm(
+            "Bố có chắc muốn xóa điểm và làm lại không?"
+        );
+
+
+    if (!answer) {
+        return;
+    }
+
+
+    clearTimeout(
+        autoNextTimer
+    );
+
+
+    correct = 0;
+
+    wrong = 0;
+
+    questionCount = 0;
+
+
+    updateScore();
+
+    updateProgress();
+
+    saveProgress();
+
+
+    randomWord();
+
+    displayWord();
+}
+
+
+/* =========================================================
+   LƯU ĐIỂM
+========================================================= */
+
+function saveProgress() {
+
+    localStorage.setItem(
+        "b1Score",
+        JSON.stringify({
+
+            correct:
+                correct,
+
+            wrong:
+                wrong,
+
+            questionCount:
+                questionCount
+        })
+    );
+}
+
+
+function loadProgress() {
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "b1Score"
+            )
+        );
+
+
+    if (!saved) {
+        return;
+    }
+
+
+    correct =
+        saved.correct || 0;
+
+    wrong =
+        saved.wrong || 0;
+
+    questionCount =
+        saved.questionCount || 0;
+
+
+    updateScore();
+
+    updateProgress();
+}
+
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+document
+    .getElementById(
+        "answerInput"
+    )
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                checkAnswer();
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   KHỞI ĐỘNG
+========================================================= */
+
+loadProgress();
+
+randomWord();
+
+displayWord();
+
+</script>
+
+</body>
+</html>
